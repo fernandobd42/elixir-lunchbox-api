@@ -77,6 +77,6 @@ config :lunchbox_api, LunchboxApi.Repo,
 
 # Configure Basic_auth for prod
 config :lunchbox_api, lunchbox_auth: [
-  username: "usernametest",
-  password: "passwordtest"
+  username: "${BASIC_AUTH_USERNAME}",
+  password: "${BASIC_AUTH_PASSWORD}"
 ]
