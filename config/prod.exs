@@ -12,10 +12,19 @@ use Mix.Config
 config :lunchbox_api, LunchboxApiWeb.Endpoint,
   http: [:inet6, port: System.get_env("PORT") || 4000],
   url: [host: "example.com", port: 80],
+  secret_key_base: "${SECRET_KEY_BASE}",
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
 config :logger, level: :info
+
+config :lunchbox_api, LunchboxApi.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: "${DATABASE_URL}",
+  database: "",
+  ssl: true,
+  pool_size: 1 # Free tier db only allows 1 conn
+
 
 # ## SSL Support
 #
@@ -66,6 +75,8 @@ config :logger, level: :info
 # Note you can't rely on `System.get_env/1` when using releases.
 # See the releases documentation accordingly.
 
-# Finally import the config/prod.secret.exs which should be versioned
-# separately.
-import_config "prod.secret.exs"
+# Configure Basic_auth for prod
+config :lunchbox_api, lunchbox_auth: [
+  username: "usernametest",
+  password: "passwordtest"
+]
