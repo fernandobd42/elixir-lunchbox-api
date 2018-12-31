@@ -40,7 +40,8 @@ defmodule LunchboxApi.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:basic_auth, "~> 2.2.2"}
     ]
   end
 
